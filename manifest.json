@@ -1,0 +1,8 @@
+{
+  "name": "PS4 Exploit",
+  "short_name": "Exploit",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "description": "PS4 GoldHen Launcher"
+}
