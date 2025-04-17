@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>أحمد عشتار - تهكير PS4</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body {
+      margin: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+    }
+    .center-button {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    .bottom-button {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 14px;
+      padding: 6px 10px;
+      background-color: #222;
+      color: #ccc;
+      border: 1px solid #666;
+      border-radius: 8px;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+    .bottom-button:hover {
+      opacity: 1;
+    }
+    button {
+      padding: 18px 45px;
+      font-size: 24px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="center-button">
+    <button onclick="launchExploit()">تشغيل التهكير</button>
+  </div>
+
+  <button class="bottom-button" onclick="startCache()">خزن الصفحة</button>
+
+  <script>
+    function launchExploit() {
+      alert("ادخل الفلاش وانتظر 10 ثواني ثم اضغط موافق");
+      const script = document.createElement('script');
+      script.src = 'goldhen_2.4b17.js';
+      document.body.appendChild(script);
+    }
+
+    function startCache() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js').then(() => {
+          let counter = 10;
+          const msg = document.createElement('div');
+          msg.style.position = 'fixed';
+          msg.style.bottom = '20px';
+          msg.style.right = '20px';
+          msg.style.padding = '10px 20px';
+          msg.style.background = '#000';
+          msg.style.color = '#fff';
+          msg.style.borderRadius = '10px';
+          msg.style.fontSize = '18px';
+          msg.style.zIndex = 9999;
+          document.body.appendChild(msg);
+
+          const interval = setInterval(() => {
+            msg.innerText = `جاري تخزين الصفحة... ${counter} ثانية`;
+            counter--;
+            if (counter < 0) {
+              clearInterval(interval);
+              msg.innerText = 'تم التخزين، اكدر تطفي النت';
+            }
+          }, 1000);
+        });
+      } else {
+        alert('متصفحك لا يدعم التخزين');
+      }
+    }
+  </script>
+</body>
+</html>
