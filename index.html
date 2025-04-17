@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تهكير PS4 - أحمد عشتار</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      font-family: sans-serif;
+      direction: rtl;
+    }
+    .center-button {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .exploit-btn {
+      background-color: red;
+      color: white;
+    }
+    .cache-btn {
+      background-color: #222;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-button">
+    <button class="exploit-btn" onclick="launchExploit()">تشغيل التهكير</button><br>
+    <button class="cache-btn" onclick="cachePage()">خزن الصفحة</button>
+  </div>
+
+  <script>
+    function launchExploit() {
+      alert("ادخل الفلاش وانتظر 10 ثواني ثم اضغط موافق");
+      const script = document.createElement('script');
+      script.src = 'goldhen_2.4b17.js';
+      document.body.appendChild(script);
+    }
+
+    function cachePage() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+          let counter = 10;
+          let message = document.createElement('div');
+          message.style.position = 'fixed';
+          message.style.bottom = '20px';
+          message.style.right = '20px';
+          message.style.padding = '20px';
+          message.style.backgroundColor = '#333';
+          message.style.color = '#fff';
+          message.style.fontSize = '20px';
+          message.style.borderRadius = '10px';
+          message.style.zIndex = '1000';
+          message.innerText = 'جارٍ تخزين الصفحة... ' + counter + ' ثواني';
+          document.body.appendChild(message);
+
+          let countdown = setInterval(() => {
+            counter--;
+            if (counter <= 0) {
+              clearInterval(countdown);
+              message.innerText = 'تم تخزين الصفحة أوفلاين. طفي النت وارجع.';
+            } else {
+              message.innerText = 'جارٍ تخزين الصفحة... ' + counter + ' ثواني';
+            }
+          }, 1000);
+        }).catch(function(error) {
+          alert('فشل تسجيل التخزين المؤقت');
+          console.error('Service worker error:', error);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
