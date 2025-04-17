@@ -1,0 +1,9 @@
+
+{
+  "name": "PS4 GoldHen Launcher - Ahmed Ishtar",
+  "short_name": "GoldHen Exploit",
+  "start_url": "./900.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

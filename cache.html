@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>جارٍ التحميل...</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <h2>جاري تخزين الصفحة... الرجاء الانتظار</h2>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(() => {
+        setTimeout(() => {
+          window.location.href = '900.html';
+        }, 7000);
+      }).catch((e) => {
+        document.body.innerHTML += '<p>فشل التخزين المؤقت</p>';
+      });
+    } else {
+      document.body.innerHTML += '<p>المتصفح لا يدعم التخزين</p>';
+    }
+  </script>
+</body>
+</html>
