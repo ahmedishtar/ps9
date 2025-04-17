@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GoldHen 2.4b17 - PS4 9.00</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+    .title {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .btn {
+      margin-top: 40vh;
+      padding: 15px 40px;
+      background-color: red;
+      border: none;
+      border-radius: 8px;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">أحمد عشتار</div>
+  <button class="btn" onclick="launch()">تشغيل التهكير</button>
+
+  <script>
+    function launch() {
+      alert("ادخل الفلاش وانتظر 10 ثواني ثم اضغط موافق");
+      var s = document.createElement('script');
+      s.src = 'goldhen_2.4b17.js';
+      document.body.appendChild(s);
+    }
+  </script>
+</body>
+</html>
